@@ -1,30 +1,24 @@
-import {
-  Breadcrumbs,
-  CourseList,
-  Hero,
-  EthCurrentPrices,
-  MainFrontShell,
-  WalletInfo,
-  OrderCard,
-} from '@components/index';
+import { CourseList, Hero } from '@components/index';
+import { getAllCourses } from 'content/courses/getCourses';
 
-export default function Home() {
+export default function Home({ courses }) {
   return (
-    <MainFrontShell>
-      <div className='fit-page-shell'>
-        <div className='relative bg-white overflow-hidden'>
-          <div className='relative max-w-7xl mx-auto px-4'>
-            <div className='fit'>
-              <Hero />
-              <Breadcrumbs />
-              <WalletInfo />
-              <EthCurrentPrices />
-              <OrderCard />
-              <CourseList />
-            </div>
+    <div className='fit-page-shell'>
+      <div className='relative bg-white overflow-hidden'>
+        <div className='relative max-w-7xl mx-auto px-4'>
+          <div className='fit'>
+            <Hero />
+            <CourseList products={courses} />
           </div>
         </div>
       </div>
-    </MainFrontShell>
+    </div>
   );
+}
+
+export function getStaticProps(ctx) {
+  const { data } = getAllCourses();
+  return {
+    props: { courses: data },
+  };
 }
