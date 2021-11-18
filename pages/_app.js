@@ -1,13 +1,16 @@
-import { MainFrontShell } from '@components/index.js';
 import '@styles/globals.css';
-import ProductsProvider from 'context/ProductsContext';
+import MainFrontShell from '../components/ui/layout/MainFrontShell';
+import ProductsProvider from '../context/ProductsContext';
+import Web3Provider from '../components/providers/web3/index';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ProductsProvider>
-      <MainFrontShell>
-        <Component {...pageProps} />
-      </MainFrontShell>
+      <Web3Provider>
+        <MainFrontShell>
+          <Component {...pageProps} />
+        </MainFrontShell>
+      </Web3Provider>
     </ProductsProvider>
   );
 }
