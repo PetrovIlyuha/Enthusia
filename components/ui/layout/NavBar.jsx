@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { useProducts } from '../../../context/ProductsContext';
+import { useProducts } from '../../providers/ProductsContext';
 
 import { motion } from 'framer-motion';
-import { useWeb3Context } from '@components/providers/web3';
+import ConnectButton from '../common/ConnectButton';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -15,7 +15,6 @@ function classNames(...classes) {
 
 export default function NavBar() {
   const [mobileShowProducts, setMobileShowProducts] = useState(false);
-  const { test } = useWeb3Context();
   const showMobileProducts = () => {
     setMobileShowProducts(prev => !prev);
   };
@@ -114,11 +113,7 @@ export default function NavBar() {
             </a>
           </Popover.Group>
           <div className='flex items-center md:ml-12'>
-            <a
-              href='#'
-              className='ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
-              Connect Wallet
-            </a>
+            <ConnectButton />
           </div>
         </div>
       </div>
@@ -212,11 +207,7 @@ export default function NavBar() {
                   </a>
                 </div>
                 <div className='mt-6'>
-                  <a
-                    href='#'
-                    className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'>
-                    Connect Wallet
-                  </a>
+                  <ConnectButton />
                 </div>
               </div>
             </div>
