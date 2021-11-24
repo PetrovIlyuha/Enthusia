@@ -1,7 +1,7 @@
-import Modal from '@components/common/Modal';
-import CourseHero from '@components/course/Single/Hero/index';
-import KeyPoints from '@components/course/Single/KeyPoints/index';
-import Lectures from '@components/course/Single/Lectures/index';
+import Modal from '@components/ui/common/Modal';
+import CourseHero from '@components/ui/course/Single/Hero/index';
+import KeyPoints from '@components/ui/course/Single/KeyPoints/index';
+import Lectures from '@components/ui/course/Single/Lectures/index';
 import { getAllCourses } from 'content/courses/getCourses';
 
 export default function Course({ product }) {

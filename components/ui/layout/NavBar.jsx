@@ -8,6 +8,7 @@ import { useProducts } from '../../providers/ProductsContext';
 
 import { motion } from 'framer-motion';
 import ConnectButton from '../common/ConnectButton';
+import { useWeb3Context } from '@components/providers/web3';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -15,9 +16,14 @@ function classNames(...classes) {
 
 export default function NavBar() {
   const [mobileShowProducts, setMobileShowProducts] = useState(false);
+  const { hooks } = useWeb3Context();
+  console.log(hooks)
+  const {account} = hooks.useAccount();
+  console.log({account})
   const showMobileProducts = () => {
     setMobileShowProducts(prev => !prev);
   };
+
   const products = useProducts();
   return (
     <Popover className='fixed top-0 left-0 w-full z-50 shadow-md bg-gray-50'>

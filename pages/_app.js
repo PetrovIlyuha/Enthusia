@@ -1,6 +1,6 @@
 import '@styles/globals.css';
 import MainFrontShell from '../components/ui/layout/MainFrontShell';
-import ProductsProvider from '../context/ProductsContext';
+import ProductsProvider from '../components/providers/ProductsContext';
 import Web3Provider from '../components/providers/web3/index';
 
 function MyApp({ Component, pageProps }) {
