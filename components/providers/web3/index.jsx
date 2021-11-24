@@ -1,6 +1,7 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import Web3 from 'web3';
+import setupWeb3Hooks from './hooks/setupWeb3Hooks';
 
 const Web3Context = createContext(null);
 
@@ -30,6 +31,7 @@ const Web3Provider = ({ children }) => {
     return {
       ...web3Api,
       loading: !web3Api.isInitialized,
+      hooks: setupWeb3Hooks(web3Api.web3),
       metamaskIsReady: web3Api.isInitialized && web3Api.web3,
       connect: web3Api.provider
         ? async () => {
