@@ -1,15 +1,11 @@
-import { useAccount } from './useAccount';
+import {accountsHandler as createUseAccounts} from './useAccount';
+import {networkHandler as createUseNetwork} from './useNetwork'
 
-const DEFAULT_HOOKS = {
-  useAccount: () => ({account: null}),
-};
 
-const setupWeb3Hooks = web3 => {
-  if (!web3) {
-    return DEFAULT_HOOKS;
-  }
+const setupWeb3Hooks = (...deps) => {
   return {
-    useAccount: useAccount(web3),
+    useAccount: createUseAccounts(...deps),
+    useNetwork: createUseNetwork(...deps)
   };
 };
 
