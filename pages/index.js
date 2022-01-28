@@ -1,5 +1,6 @@
 import { CourseList, Hero } from '@components/index';
 import { getAllCourses } from 'content/courses/getCourses';
+import Card from "@components/ui/course/Single/Card";
 
 export default function Home({ courses }) {
   return (
@@ -8,7 +9,9 @@ export default function Home({ courses }) {
         <div className='relative max-w-7xl mx-auto px-4'>
           <div className='fit'>
             <Hero />
-            <CourseList products={courses} />
+            <CourseList products={courses} >
+              {(product) => <Card key={product.id} product={product}/>}
+            </CourseList>
           </div>
         </div>
       </div>
