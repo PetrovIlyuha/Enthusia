@@ -1,46 +1,61 @@
-import { HomeIcon } from '@heroicons/react/solid';
-import React from 'react';
+import React from "react";
+import { ShoppingBagIcon } from "@heroicons/react/outline";
+import Link from "next/link";
 
 const pages = [
-  { name: 'My Orders', href: '#', current: false },
-  { name: 'Orders', href: '#', current: true },
+  { name: "My Orders", href: "#", current: false },
+  { name: "Manage Orders", href: "#", current: true },
 ];
 
 const Breadcrumbs = () => {
   return (
-    <nav className='flex my-4' aria-label='Breadcrumb'>
+    <nav
+      className="container px-6 py-4 mx-auto flex my-4"
+      aria-label="Breadcrumb"
+    >
       <ol
-        role='list'
-        className='bg-green-600 rounded-md shadow px-6 flex space-x-4'>
-        <li className='flex'>
-          <div className='flex items-center'>
-            <a href='#' className='text-gray-400 hover:text-gray-500'>
-              <HomeIcon
-                className='flex-shrink-0 h-5 w-5 text-yellow-100 hover:text-yellow-300'
-                aria-hidden='true'
-              />
-              <span className='sr-only'>Buy</span>
-            </a>
+        role="list"
+        className="bg-indigo-300 rounded-md shadow px-6 flex space-x-4"
+      >
+        <li className="flex group cursor-pointer">
+          <div className="flex items-center">
+            <Link
+              href="#"
+              className="text-gray-400 hover:text-gray-500"
+              passHref
+            >
+              <div>
+                <ShoppingBagIcon
+                  className="flex-shrink-0 h-5 w-5 text-white group-hover:text-gray-500 transform transition-all duration-200"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Buy</span>
+              </div>
+            </Link>
           </div>
         </li>
-        {pages.map(page => (
-          <li key={page.name} className='flex '>
-            <div className='flex items-center'>
+        {pages.map((page) => (
+          <li key={page.name} className="flex group cursor-pointer">
+            <div className="flex items-center">
               <svg
-                className='flex-shrink-0 w-6 h-full text-white'
-                viewBox='0 0 24 44'
-                preserveAspectRatio='none'
-                fill='white'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'>
-                <path d='M.293 0l22 22-22 22h1.414l22-22-22-22H.293z' />
+                className="flex-shrink-0 w-6 h-full text-white"
+                viewBox="0 0 24 44"
+                preserveAspectRatio="none"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
               </svg>
-              <a
+              <Link
                 href={page.href}
-                className='ml-4 text-sm font-medium text-yellow-100 hover:text-yellow-300'
-                aria-current={page.current ? 'page' : undefined}>
-                {page.name}
-              </a>
+                aria-current={page.current ? "page" : undefined}
+                passHref
+              >
+                <span className="ml-4 text-sm font-medium text-white group-hover:text-gray-500 transform transition-all duration-200">
+                  {page.name}
+                </span>
+              </Link>
             </div>
           </li>
         ))}
