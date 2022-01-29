@@ -2,7 +2,7 @@ import MarketHeader from "@components/ui/marketplace/MarketHeader";
 import OrderCard from "@components/ui/order/Card";
 import React from "react";
 
-const ManageCourses = () => {
+const ManageProduct = () => {
   return (
     <div className="fit-page-shell">
       <div className="relative bg-white overflow-hidden">
@@ -19,4 +19,4 @@ const ManageCourses = () => {
   );
 };
 
-export default ManageCourses;
+export default ManageProduct;
