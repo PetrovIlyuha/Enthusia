@@ -1,13 +1,15 @@
 import React from "react";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const pages = [
-  { name: "My Orders", href: "#", current: false },
-  { name: "Manage Orders", href: "#", current: true },
+  { name: "My Orders", href: "/marketplace/courses/owned", current: false },
+  { name: "Manage Orders", href: "/marketplace/courses/manage", current: true },
 ];
 
 const Breadcrumbs = () => {
+  const { pathname } = useRouter();
   return (
     <nav
       className="container px-6 py-4 mx-auto flex my-4"
@@ -20,13 +22,15 @@ const Breadcrumbs = () => {
         <li className="flex group cursor-pointer">
           <div className="flex items-center">
             <Link
-              href="#"
+              href="/marketplace"
               className="text-gray-400 hover:text-gray-500"
               passHref
             >
               <div>
                 <ShoppingBagIcon
-                  className="flex-shrink-0 h-5 w-5 text-white group-hover:text-gray-500 transform transition-all duration-200"
+                  className={`"flex-shrink-0 h-5 w-5 text-white group-hover:text-gray-500 transform transition-all duration-200" ${
+                    pathname === "/marketplace" && " text-blue-900"
+                  }`}
                   aria-hidden="true"
                 />
                 <span className="sr-only">Buy</span>
@@ -52,7 +56,11 @@ const Breadcrumbs = () => {
                 aria-current={page.current ? "page" : undefined}
                 passHref
               >
-                <span className="ml-4 text-sm font-medium text-white group-hover:text-gray-500 transform transition-all duration-200">
+                <span
+                  className={`"text-sm font-medium text-white group-hover:text-gray-500 transform transition-all duration-200" ${
+                    pathname === page.href ? "text-blue-900 ml-4" : "ml-4"
+                  }`}
+                >
                   {page.name}
                 </span>
               </Link>
